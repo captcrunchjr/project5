@@ -1,0 +1,41 @@
+<%- include('../templates/head'); -%>
+<%- include('../templates/header'); -%>
+
+<aside class="spacer left"></aside>
+    <main>
+        <% if (locals.error) { %>
+            <div class="error">
+                <div class = "alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            </div>
+        <% } %>
+        <% if (items) { %>
+            <div class="items-container">
+                <% items.forEach(function(item) { %>
+                    <div class="card">
+                        <a href="items/view/<%= item._id %>"><img class="card-img-top" src="data:<%= item.image.contentType %> ;base64,<%= item.image.data.toString('base64') %>"></a>
+                        <div class="card-body">
+                            <div class="cardtopper">
+                                <h5 class="card-title"><%= item.title %></h5>
+                                <p class="card-text"><%= item.details %></p>
+                                <hr>
+                            </div>
+                            <div class="cardbottom">
+                                <div id="list-details">
+                                    <small class="text-muted">Price: $<%= item.price %></small>
+                                    <small class="text-muted">Offers: 0</small>
+                                    <small class="text-muted">Condition: <%= item.condition %></small>
+                                </div>
+                                <a href="items/view/<%= item._id %>" class="btn btn-primary">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </main>
+
+    <aside class="spacer right"></aside>
+
+<%- include('../templates/footer'); -%>

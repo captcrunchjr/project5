@@ -1,0 +1,62 @@
+<%- include('../templates/head'); -%>
+<%- include('../templates/header'); -%>
+
+<aside class="spacer left"></aside>
+
+    <main class="new-container">
+        <div class="cta">
+            <h1>Have a game you want to sell?</h1>
+            <h5>Game reselling is made easy with Haze!</h5>
+        </div>
+        <div class="sell-form">
+            <form action="/items/new" method="POST" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label for="condition" class="col-sm-1 col-form-label">Condition</label>
+                    <div class="col-sm-11">
+                        <select id="condition" class="form-control" name="condition">
+                            <option disabled selected></option>
+                            <option value="Mint">Mint</option>
+                            <option value="New">New</option>
+                            <option value="Very Good">Very Good</option>
+                            <option value="Good">Good</option>
+                            <option value="Fair">Fair</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="title" class="col-sm-1 col-form-label">Title</label>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="price" class="col-sm-1 col-form-label">Price</label>
+                    <div class="col-sm-11">
+                        <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="details" class="col-sm-1 col-form-label">Details</label>
+                    <div class="col-sm-11">
+                        <textarea class="form-control" id="details" name="details" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="image" class="col-sm-1 col-form-label">Image</label>
+                    <div class="col-sm-11">
+                        <input type="file" class="form-control-file" name="image" id="image">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-11 offset-sm-1">
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </main>
+
+    <aside class="spacer right"></aside>
+
+<%- include('../templates/footer'); -%>

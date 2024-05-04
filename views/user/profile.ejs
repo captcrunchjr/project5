@@ -1,0 +1,77 @@
+<%- include('../templates/head'); -%>
+<%- include('../templates/header'); -%>
+<main>
+    <div class="profile-container">
+        <h2>Welcome, <%=user.firstName%></h2>
+        <%if(items.length){%>
+            <div>
+                <h3>Your Listings</h3>
+                <table class="listings-view">
+                    <thead>
+                        <tr>
+                            <th class="th th-item">Item</th>
+                            <th class="th th-status">Status</th>
+                            <th class="th th-action">Action</th>
+                            <th class="th th-offers">Offers</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% items.forEach(item => { %>
+                            <tr>
+                                <td><a href="/items/view/<%= item._id %>"><%= item.title %></a></td>
+                                <td>
+                                    <% if(item.active){ %>
+                                        Active
+                                    <% }else{ %>
+                                        Inactive
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <form class="inline-form" method="GET" action="/items/edit/<%= item._id %>">
+                                        <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                                    </form>
+                                    <form class="inline-form" method="POST" action="/items/delete/<%= item._id %>?_method=DELETE">
+                                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                </td>
+                                <td><%=item.totalOffers%> Offers  <a href="/items/<%=item._id%>/offer/viewAll"><button class="btn btn-primary">View</button></a></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <%}else{%>
+            <div class="listings-view">
+                <h4>You have no listings at this time.</h4>
+            </div>
+        <%}%>
+        <%if(offers.length){%>
+            <div>
+                <h3>Your Offers</h3>
+                <table class="listings-view">
+                    <thead>
+                        <tr>
+                            <th class="th th-item">Item</th>
+                            <th class="th th-status">Status</th>
+                            <th class="th th-offers">Offer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% offers.forEach(offer => { %>
+                            <tr>
+                                <td><a href="/items/view/<%= offer.item._id %>"><%= offer.item.title %></a></td>
+                                <td><%=offer.status %></td>
+                                <td>$<%=(offer.amount).toFixed(2) %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <%}else{%>
+            <div class="listings-view">
+                <h4>You have no offers at this time.</h4>
+            </div>
+        <%}%>
+    </div>
+</main>
+<%- include('../templates/footer.ejs')%>

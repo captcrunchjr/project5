@@ -1,0 +1,50 @@
+<%- include('../templates/head'); -%>
+<%- include('../templates/header'); -%>
+
+<aside class="spacer left"></aside>
+
+<main class="item-container">
+    <% if (item) { %>
+        <div class="item-display">
+            <h2><%= item.title %></h2>
+            <img src="data:<%= item.image.contentType %> ;base64,<%= item.image.data.toString('base64') %>">
+        </div>
+        <div class="item-info">
+            <h1><%= item.title %></h1>
+            <ul class="item-details">
+                <li>Condition: <%= item.condition %></li>
+                <li>Price: $<%= item.price %> | Offers: <%= item.totalOffers %></li>
+                <li>Seller: <%= item.seller.firstName + ' ' + item.seller.lastName %></li>
+                <li>Details: <%= item.details %></li>
+            </ul>
+            <% if (user && user === sellerId) { %>
+                <div class="button-container">
+                    <form class="inline-form" method="GET" action="/items/edit/<%= item._id %>">
+                        <button class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
+                    </form>
+                    <form class="inline-form" method="POST" action="/items/delete/<%= item._id %>?_method=DELETE">
+                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i>  Delete</button>
+                    </form>
+                </div>
+            <% } %>
+            <% if (item.active && (user && user !== sellerId)) { %>
+                <div class="button-container">
+                    <form class="inline-form" method="GET" action="/items/<%= item._id %>/offer/new">
+                        <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Offer</button>
+                    </form>
+                </div>
+            <%} %>
+            <div class="offers-preview">
+                <% if(item.active){ %>
+                    <span>Current highest offer: $<%=(item.highestOffer).toFixed(2)%></span>
+                <% } else { %>
+                    <span>This item is no longer available.</span>
+                <% } %>
+            </div>
+
+      <% } %>
+</main>
+
+<aside class="spacer right"></aside>
+
+<%- include('../templates/footer'); -%>

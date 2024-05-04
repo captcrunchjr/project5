@@ -1,0 +1,46 @@
+<%- include('../templates/head'); -%>
+<%- include('../templates/header'); -%>
+<main>
+    <div class="profile-container">
+        <%if(offers.length){%>
+            <div>
+                <h3>Your Offers for <%=item.title%></h3>
+                <table class="listings-view">
+                    <thead>
+                        <tr>
+                            <th class="th th-">Buyer</th>
+                            <th class="th th-">Offer</th>
+                            <th class="th th-">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% offers.forEach(offer => { %>
+                            <tr>
+                                <td>
+                                    <%=offer.buyer.firstName + ' ' + offer.buyer.lastName%>
+                                </td>
+                                <td><a href="/items/view/<%= item._id %>">$<%= (offer.amount).toFixed(2) %></a></td>
+                                <% if(item.active){ %>
+                                    <td>
+                                        <form class="inline-form" method="POST" action="/items/<%=item._id%>/offer/accept/<%=offer._id%>?_method=PUT">
+                                            <button class="btn btn-primary">Accept</button>
+                                        </form>
+                                    </td>
+                                <% } else { %>
+                                    <td>
+                                        <%=offer.status %>
+                                    </td>
+                                <% } %>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        <%}else{%>
+            <div class="listings-view">
+                <h4>This item has no offers at this time.</h4>
+            </div>
+        <%}%>
+    </div>
+</main>
+<%- include('../templates/footer.ejs')%>

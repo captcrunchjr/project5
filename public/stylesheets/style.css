@@ -1,0 +1,416 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+:root {
+  --primary: #77D4FC;
+  --secondary: #4B91F1;
+  --accent: #031a3a;
+  --background: #010C80;
+}
+
+body {
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: var(--secondary);
+  display: grid;
+  grid-template-areas:
+      "header header header"
+      "left center right"
+      "footer footer footer";
+  row-gap: 1rem;
+  grid-template-rows: auto 1fr 5vh;
+  grid-template-columns: 5vw 1fr 5vw;
+  overflow-y: scroll;
+      
+}
+.left{
+  grid-area: left;
+}
+
+.right{
+  grid-area: right;
+}
+
+.container{
+  grid-area: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+
+/* Header Styles */
+.header {
+  padding: 0 0 0 0 !important;
+  padding: 20px;
+  grid-area: header;
+  box-shadow: #77D4FC inset 0px 0px 5px;
+  background-color: #77d4fc28;
+}
+
+/* Nav Styles */
+.logo{
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.nav-item a{
+  color: var(--accent) !important;
+}
+
+.container-fluid{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+
+/* Footer Styles */
+.footer {
+  padding: 10px 20px;
+  grid-area: footer;
+  bottom: 0;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--accent);
+}
+
+.footer li{
+  list-style-type: none;
+  margin: 0 5px 0 5px;
+}
+
+.footerlinks{
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerlinks li a, footer{
+  color: white;
+}
+
+/* Home Styles */
+.home-container{
+  display: grid;
+  grid-template-areas: "main"
+                       "additional";
+  justify-content: center;
+  grid-template-columns: 1fr;
+  row-gap: 3rem;
+}
+.brand-section{
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+}
+.home-additional{
+  grid-area: additional;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+
+}
+.brand{
+  max-width: 100%;
+}
+
+/* Items Styles */
+.items-container{
+  grid-area: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 4rem;
+}
+
+.card{
+  width: auto;
+  background-color: #4b90f128;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.cardbottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Item Styles */
+.item-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 5rem;
+}
+.item-info h1{
+  font-weight: bolder;
+  color: var(--background);
+}
+.item-display img{
+  max-width: 100%;
+}
+.item-details{
+  list-style-type: none;
+  margin-top: 1rem;
+}
+.item-details li{
+  margin: 0.5rem 0 0.5rem 0;
+}
+.cardbottom{
+  max-height: fit-content;
+}
+#list-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-img-top{
+  max-width: inherit;
+  max-height: 500px;
+}
+
+/* New Styles */
+.new-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+}
+.cta{
+  margin-left: 10rem;
+}
+
+.errorcontainer{
+  grid-area: center;
+  text-align: center;
+}
+
+.inline-form {
+  display: inline-block;
+}
+
+.editimg{
+  max-width: 25%;
+  max-height: 25%;
+}
+
+/* Sign Up Styles */
+.signup-container {
+  grid-area: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.signup-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .5rem;
+  width: 300px;
+}
+
+.signup-form label {
+  margin: 0;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+  padding: 10px;
+  border: 1px solid var(--secondary);
+  border-radius: 5px;
+}
+
+.signup-form input[type="submit"] {
+  padding: 10px;
+  background-color: var(--background);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup-form button:hover {
+  background-color: var(--secondary);
+}
+
+.signup-form p {
+  text-align: center;
+  color: var(--secondary);
+}
+
+.signup-form p a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.signup-form p a:hover {
+  text-decoration: underline;
+}
+
+/* Login Styles */
+.login-container {
+  grid-area: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.login-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .5rem;
+  width: 300px;
+}
+
+.login-form label{
+  margin: 0;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  padding: 10px;
+  border: 1px solid var(--secondary);
+  border-radius: 5px;
+}
+
+.login-form input[type="submit"]{
+  padding: 10px;
+  background-color: var(--background);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: var(--secondary);
+}
+
+.login-form p {
+  text-align: center;
+  color: var(--secondary);
+}
+
+.login-form p a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.login-form p a:hover {
+  text-decoration: underline;
+}
+
+/* Profile Styles */
+.profile-container {
+  grid-area: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.profile-container h2 {
+  text-align: center;
+}
+
+.profile-container h3 {
+  margin-bottom: 1rem;
+}
+
+.listings-view {
+  width: 40%;
+}
+
+.listings-view {
+  width: 40%;
+}
+
+.listings-view a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.listings-view tbody tr {
+  background-color: #0116fa0a;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.th-item{
+  width: 40%;
+}
+
+.th-status{
+  width: 20%;
+}
+
+.th-action{
+  width: 15%;
+}
+
+.listings-view th, td {
+  padding-left: 1rem;
+}
+
+.listings-view th {
+  border-bottom-style: groove;
+  border-bottom-width: 3px;
+  border-bottom-color: #ccc;
+}
+
+.listings-view td {
+  border-bottom-style: groove;
+  border-bottom-width: 2px;
+  border-bottom-color: #ccc;
+}
+
+.listings-view button{
+  margin: 2px 0px;
+}
+
+.error-container{
+  grid-area: center;
+  text-align: center;
+}
+
+/*Offer Styles*/
+.offer-form-group input[type="text"]{
+  padding: 10px;
+  border: 1px solid var(--secondary);
+  border-radius: 5px;
+  max-width: fit-content;
+}
+.offer-form-group{
+  display: flex;
+  gap: 1rem;
+}
+
+.confirmation-container{
+  grid-area: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.offers-preview{
+  margin-top: 2rem;
+  color: red;
+}
